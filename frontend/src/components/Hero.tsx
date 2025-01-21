@@ -1,11 +1,11 @@
 const Hero = () => {
     return (
-        <div className="bg-blue-800 pb-16">
+        <div className="bg-indigo-700 pb-4">
             <div className="container mx-auto flex flex-col gap-2">
-                <h1 className="text-5xl text-white font-bold">
+                <h1 className="text-5xl text-yellow-300 font-bold">
                     Find your next day
                 </h1>
-                <p className="text 2xl text-white">
+                <p className="text-2xl text-yellow-300">
                     Search low prices on hotels, for your dream vacation...
                 </p>
             </div>
@@ -13,4 +13,4 @@ const Hero = () => {
     )
 }
 
-export default Hero
+export default Hero;
