@@ -45,29 +45,34 @@ const HotelDetailsSection = () => {
                 ></textarea>
                 {errors?.description && <span className="text-sm text-red-500">{errors.description.message}</span>}
             </label>
-            <label className="flex flex-col gap-2 max-w-[50%]">
-                <span className="text-sm font-semibold text-gray-600">Price Per Night</span>
-                <input
-                    type="number"
-                    min={1}
-                    className="border border-gray-300 rounded-lg w-full py-2 px-4 text-gray-800 focus:outline-none focus:ring focus:ring-indigo-300"
-                    {...register("pricePerNight", { required: "This field is required" })}
-                />
-                {errors?.pricePerNight && <span className="text-sm text-red-500">{errors.pricePerNight.message}</span>}
-            </label>
-            <label className="flex flex-col gap-2 max-w-[50%] ">
-                <span className="text-sm font-semibold text-gray-600">Star Rating</span>
-                <select
-                    {...register("starRating", { required: "This field is required" })}
-                    className="border border-gray-300 rounded-lg w-full py-2 px-4 text-gray-800 focus:outline-none focus:ring focus:ring-indigo-300"
-                >
-                    <option value="" className="text-sm text-gray-500">Select a Rating</option>
-                    {[1, 2, 3, 4, 5].map((rating) => (
-                        <option key={rating} value={rating}>{rating}</option>
-                    ))}
-                </select>
-                {errors?.starRating && <span className="text-sm text-red-500">{errors.starRating.message}</span>}
-            </label>
+
+            <div className="flex flex-col md:flex-row gap-4">
+                <label className="flex flex-col gap-2 w-full">
+                    <span className="text-sm font-semibold text-gray-600">Price Per Night</span>
+                    <input
+                        type="number"
+                        min={1}
+                        className="border border-gray-300 rounded-lg w-full py-2 px-4 text-gray-800 focus:outline-none focus:ring focus:ring-indigo-300"
+                        {...register("pricePerNight", { required: "This field is required" })}
+                    />
+                    {errors?.pricePerNight && <span className="text-sm text-red-500">{errors.pricePerNight.message}</span>}
+                </label>
+                <label className="flex flex-col gap-2 w-full">
+                    <span className="text-sm font-semibold text-gray-600">Star Rating</span>
+                    <select
+                        {...register("starRating", { required: "This field is required" })}
+                        className="border border-gray-300 rounded-lg w-full py-2 px-4 text-gray-800 focus:outline-none focus:ring focus:ring-indigo-300"
+                    >
+                        <option value="" className="text-sm text-gray-500">Select a Rating</option>
+                        {[1, 2, 3, 4, 5].map((rating) => (
+                            <option key={rating} value={rating}>{rating}</option>
+                        ))}
+                    </select>
+                    {errors?.starRating && <span className="text-sm text-red-500">{errors.starRating.message}</span>}
+                </label>
+            </div>
+
+
         </div>
     );
 };

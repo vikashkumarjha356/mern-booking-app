@@ -11,9 +11,6 @@ export const hotelTypes = [
     "Beach Resort",
     "Golf Resort",
     "Motel",
-    "All Inclusive",
-    "Pet Friendly",
-    "Self Catering",
 ];
 
 export const hotelFacilities = [
