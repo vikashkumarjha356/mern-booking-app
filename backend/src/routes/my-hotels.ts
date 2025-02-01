@@ -36,8 +36,9 @@ router.post('/', verifyToken, [
         const imageUrls = await Promise.all(uploadPromises);
         newHotel.imageUrls = imageUrls;
         newHotel.lastUpdated = new Date();
-        newHotel.userId = req.body.userId;
+        newHotel.userId = req.userId;
         const hotel = new Hotel(newHotel);
+        console.log("Hotel: ", hotel);
         await hotel.save();
         res.status(201).send(hotel);
 

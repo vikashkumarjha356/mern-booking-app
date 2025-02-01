@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 export interface HotelType {
     _id: string;
-    userId: string;
+    userId: string | undefined;
     name: string;
     city: string;
     country: string;
