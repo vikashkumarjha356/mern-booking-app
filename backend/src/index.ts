@@ -39,7 +39,7 @@ app.use('/api/my-hotels', myHotelRoutes)
 app.use('/api/hotels', hotelRoutes)
 
 app.get('*', (req: Request, res: Response) => {
-    res.send(path.join(__dirname, '../../frontend/dist/index.html'))
+    res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'))
 })
 
 app.listen(7000, () => {
