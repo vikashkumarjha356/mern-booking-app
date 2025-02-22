@@ -11,7 +11,7 @@ const GoogleLoginButton = () => {
     const queryClient = useQueryClient();
     const navigate = useNavigate();
 
-    const { mutate, isLoading } = useMutation(apiClient.googleLogin, {
+    const { mutate } = useMutation(apiClient.googleLogin, {
         onSuccess: async () => {
             showToast({ message: "Login Successfull", type: "SUCCESS" })
             await queryClient.invalidateQueries("validateToken");
