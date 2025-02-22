@@ -4,20 +4,22 @@ import bcrypt from "bcryptjs"
 export type UserType = {
     _id: string,
     email: string,
-    password: string,
+    password?: string | null,
     firstName: string,
-    lastName: string
+    lastName: string,
+    googleId?: string | null
 }
 
 const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    password: { type: String },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
+    googleId: { type: String }
 })
 
 userSchema.pre("save", async function (next) {
-    if (this.isModified("password")) {
+    if (this.password && this.isModified("password")) {
         this.password = await bcrypt.hash(this.password, 8)
     }
 

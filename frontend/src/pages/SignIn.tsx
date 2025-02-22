@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "react-query";
 import * as apiClient from '../api-client';
 import { useAppContext } from "../contexts/AppContext";
 import { Link, useNavigate } from "react-router-dom";
+import GoogleLoginButton from "../oAuth/GoogleLoginButton";
 
 export type SignInFormData = {
     email: string;
@@ -71,6 +72,7 @@ const SignIn = () => {
                     Log In
                 </button>
             </div>
+            <GoogleLoginButton />
         </form>
     );
 };
