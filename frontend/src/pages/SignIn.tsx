@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import * as apiClient from '../api-client';
 import { useAppContext } from "../contexts/AppContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLoginButton from "../oAuth/GoogleLoginButton";
 
 export type SignInFormData = {
@@ -14,6 +14,8 @@ const SignIn = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<SignInFormData>();
     const queryClient = useQueryClient();
 
+    const location = useLocation();
+
     const onSubmit = handleSubmit(data => {
         mutation.mutate(data);
     });
@@ -24,7 +26,7 @@ const SignIn = () => {
         onSuccess: async () => {
             showToast({ message: "Logged in successfully", type: "SUCCESS" });
             await queryClient.invalidateQueries("validateToken");
-            navigate("/");
+            navigate(location.state?.form?.pathname || "/");
         },
         onError: (error: Error) => {
             showToast({ message: error.message, type: "ERROR" });
