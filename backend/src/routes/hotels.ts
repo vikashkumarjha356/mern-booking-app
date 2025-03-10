@@ -131,10 +131,12 @@ router.post("/:hotelId/bookings", verifyToken, async (req: Request, res: Respons
             userId: req.userId
         }
 
+        console.log(newBooking);
+
         const hotel = await Hotel.findOneAndUpdate(
             { _id: req.params.hotelId },
             {
-                $push: { bookings: newBooking }
+                $push: { bookings: newBooking },
             }
         );
 
